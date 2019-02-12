@@ -1,6 +1,5 @@
 package jpp.infinityloop.gui.color;
 
-import javafx.scene.effect.Light;
 import javafx.scene.effect.Light.Distant;
 import javafx.scene.effect.Lighting;
 import javafx.scene.paint.Color;
