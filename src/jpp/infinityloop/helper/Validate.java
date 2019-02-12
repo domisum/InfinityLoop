@@ -9,6 +9,7 @@ public final class Validate
 
 	}
 
+
 	// VALIDATE
 	public static <T> void notEmpty(T[] array, String message)
 	{
