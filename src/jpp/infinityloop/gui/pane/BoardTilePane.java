@@ -9,13 +9,14 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import jpp.infinityloop.board.model.Tile;
 import jpp.infinityloop.gui.Images;
+import jpp.infinityloop.gui.Images.ImageAndRotation;
 import jpp.infinityloop.gui.color.ColorChangeEffect;
 
 public class BoardTilePane extends StackPane
 {
 
 	// REFERENCES
-	private ImageView imageView;
+	private final ImageView imageView;
 
 	// TEMP
 	private int currentAngle;
@@ -26,15 +27,15 @@ public class BoardTilePane extends StackPane
 	{
 		Tile tile = boardPane.getBoard().getTileAt(x, y);
 
-		this.imageView = new ImageView();
-		this.imageView.setPreserveRatio(true);
-		this.imageView.setCache(true);
-		getChildren().setAll(this.imageView);
+		imageView = new ImageView();
+		imageView.setPreserveRatio(true);
+		imageView.setCache(true);
+		getChildren().setAll(imageView);
 
-		Images.ImageAndRotation imageAndRotation = Images.getInstance().getTileImage(tile);
-		this.imageView.setImage(imageAndRotation.image);
-		this.imageView.setRotate(imageAndRotation.rotation);
-		this.currentAngle = imageAndRotation.rotation;
+		ImageAndRotation imageAndRotation = Images.getInstance().getTileImage(tile);
+		imageView.setImage(imageAndRotation.getImage());
+		imageView.setRotate(imageAndRotation.getRotation());
+		currentAngle = imageAndRotation.getRotation();
 
 		setSize(5);
 
@@ -45,30 +46,30 @@ public class BoardTilePane extends StackPane
 	// SETTERS
 	public void setSize(double size)
 	{
-		this.imageView.setFitHeight(size);
-		this.imageView.setFitWidth(size);
+		imageView.setFitHeight(size);
+		imageView.setFitWidth(size);
 	}
 
 	public void setColor(Color color)
 	{
-		this.imageView.setEffect(new ColorChangeEffect(color));
+		imageView.setEffect(new ColorChangeEffect(color));
 	}
 
 
 	// ROTATION
 	public void rotate(long duration)
 	{
-		rotate(duration, (e)->
+		rotate(duration, e->
 		{
 		});
 	}
 
 	public void rotate(long duration, EventHandler<ActionEvent> onFinished)
 	{
-		this.currentAngle += 90;
+		currentAngle += 90;
 
-		RotateTransition rotateTransition = new RotateTransition(Duration.millis(duration), this.imageView);
-		rotateTransition.setToAngle(this.currentAngle);
+		RotateTransition rotateTransition = new RotateTransition(Duration.millis(duration), imageView);
+		rotateTransition.setToAngle(currentAngle);
 		rotateTransition.setOnFinished(onFinished);
 
 		rotateTransition.play();

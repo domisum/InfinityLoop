@@ -20,7 +20,7 @@ public class Board
 		Validate.notEmpty(tiles, "The tile array has to be at least 1 tile long in each dimension");
 		Validate.notEmpty(tiles[0], "The tile array has to be at least 1 tile long in each dimension");
 
-		this.tiles = tiles;
+		this.tiles = tiles.clone();
 	}
 
 	public Board copy()
@@ -45,7 +45,7 @@ public class Board
 			for(int x = 0; x < getWidth(); x++)
 				string += getTileAt(x, y).toString();
 
-			if(y != getHeight()-1)
+			if(y != (getHeight()-1))
 				string += "\n";
 		}
 
@@ -123,7 +123,7 @@ public class Board
 
 	private Tile getTileAtOrOutOfBoundsEmpty(int x, int y)
 	{
-		if(x < 0 || x >= getWidth() || y < 0 || y >= getHeight())
+		if((x < 0) || (x >= getWidth()) || (y < 0) || (y >= getHeight()))
 			return EMPTY_TILE;
 
 		return getTileAt(x, y);

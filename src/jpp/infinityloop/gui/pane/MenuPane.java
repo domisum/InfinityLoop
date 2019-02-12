@@ -21,8 +21,8 @@ public class MenuPane extends VBox
 	protected static final double ICON_SIZE = 40;
 
 	// REFERENCES
-	private MainGUI mainGUI;
-	private Set<MenuIconPane> iconPanes = new HashSet<>();
+	private final MainGUI mainGUI;
+	private final Set<MenuIconPane> iconPanes = new HashSet<>();
 
 
 	// INIT
@@ -43,34 +43,34 @@ public class MenuPane extends VBox
 		// components
 		MenuIconPane loadIconPane = new MenuIconPane("load", "Load board", e->load());
 		gridPane.add(loadIconPane, 0, 0);
-		this.iconPanes.add(loadIconPane);
+		iconPanes.add(loadIconPane);
 
 		MenuIconPane saveIconPane = new MenuIconPane("save", "Save board", e->save());
 		gridPane.add(saveIconPane, 0, 1);
-		this.iconPanes.add(saveIconPane);
+		iconPanes.add(saveIconPane);
 
 		MenuIconPane shuffleIconPane = new MenuIconPane("shuffle", "Generate new shuffled board", e->shuffle());
 		gridPane.add(shuffleIconPane, 0, 2);
-		this.iconPanes.add(shuffleIconPane);
+		iconPanes.add(shuffleIconPane);
 
 		MenuIconPane solveIconPane = new MenuIconPane("solve", "Solve current board", e->solve());
 		gridPane.add(solveIconPane, 0, 3);
-		this.iconPanes.add(solveIconPane);
+		iconPanes.add(solveIconPane);
 
 		MenuIconPane fullscreenIconPane = new MenuIconPane("fullscreen", "Fullscreen mode", e->fullscreen());
 		gridPane.add(fullscreenIconPane, 0, 4);
-		this.iconPanes.add(fullscreenIconPane);
+		iconPanes.add(fullscreenIconPane);
 
 		MenuIconPane windowedIconPane = new MenuIconPane("windowed", "Windowed mode", e->windowed());
 		gridPane.add(windowedIconPane, 0, 5);
-		this.iconPanes.add(windowedIconPane);
+		iconPanes.add(windowedIconPane);
 	}
 
 
 	// SETTERS
 	public void setImageColor(Color color)
 	{
-		for(MenuIconPane menuIconPane : this.iconPanes)
+		for(MenuIconPane menuIconPane : iconPanes)
 			menuIconPane.setImageColor(color);
 	}
 
@@ -78,12 +78,12 @@ public class MenuPane extends VBox
 	// INTERACTION
 	private void load()
 	{
-		if(this.mainGUI.getBoardPane().isSolving())
+		if(mainGUI.getBoardPane().isSolving())
 			return;
 
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Load InfinityLoop board file");
-		File chosenFile = fileChooser.showOpenDialog(this.mainGUI.getPrimaryStage());
+		File chosenFile = fileChooser.showOpenDialog(mainGUI.getPrimaryStage());
 
 		if(chosenFile == null)
 			return;
@@ -96,28 +96,28 @@ public class MenuPane extends VBox
 		}
 		catch(Exception e)
 		{
-			this.mainGUI.displayError("The selected board could not be loaded:\n\n"+e.getMessage());
+			mainGUI.displayError("The selected board could not be loaded:\n\n"+e.getMessage());
 			return;
 		}
 
-		this.mainGUI.getBoardPane().setBoard(board);
-		this.mainGUI.changeToRandomColorCombination();
+		mainGUI.getBoardPane().setBoard(board);
+		mainGUI.changeToRandomColorCombination();
 	}
 
 	private void save()
 	{
-		if(this.mainGUI.getBoardPane().isSolving())
+		if(mainGUI.getBoardPane().isSolving())
 			return;
 
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Save InfinityLoop board file");
 		fileChooser.setInitialFileName("ininityLoopBoard.bin");
-		File chosenFile = fileChooser.showSaveDialog(this.mainGUI.getPrimaryStage());
+		File chosenFile = fileChooser.showSaveDialog(mainGUI.getPrimaryStage());
 
 		if(chosenFile == null)
 			return;
 
-		Board board = this.mainGUI.getBoardPane().getBoard();
+		Board board = mainGUI.getBoardPane().getBoard();
 
 		try
 		{
@@ -126,35 +126,35 @@ public class MenuPane extends VBox
 		}
 		catch(Exception e)
 		{
-			this.mainGUI.displayError("The current board could not be saved:\n\n"+e.getMessage());
+			mainGUI.displayError("The current board could not be saved:\n\n"+e.getMessage());
 			return;
 		}
 	}
 
 	private void shuffle()
 	{
-		if(this.mainGUI.getBoardPane().isSolving())
+		if(mainGUI.getBoardPane().isSolving())
 			return;
 
-		this.mainGUI.displayRandomBoard();
+		mainGUI.displayRandomBoard();
 	}
 
 	private void solve()
 	{
-		boolean solved = this.mainGUI.getBoardPane().solve();
+		boolean solved = mainGUI.getBoardPane().solve();
 
 		if(!solved)
-			this.mainGUI.displayError("The board couldn't be solved, since it is unsolvable.");
+			mainGUI.displayError("The board couldn't be solved, since it is unsolvable.");
 	}
 
 	private void fullscreen()
 	{
-		this.mainGUI.getPrimaryStage().setFullScreen(true);
+		mainGUI.getPrimaryStage().setFullScreen(true);
 	}
 
 	private void windowed()
 	{
-		this.mainGUI.getPrimaryStage().setFullScreen(false);
+		mainGUI.getPrimaryStage().setFullScreen(false);
 	}
 
 }

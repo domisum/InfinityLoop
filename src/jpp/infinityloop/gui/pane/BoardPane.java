@@ -17,11 +17,11 @@ public class BoardPane extends HBox
 {
 
 	// REFERENCES
-	private MainGUI mainGUI;
+	private final MainGUI mainGUI;
 	private Board board;
 
 	// GUI
-	private GridPane gridLayout;
+	private final GridPane gridLayout;
 	private BoardTilePane[][] tilePanes;
 
 	private double boardWidth = 50;
@@ -31,7 +31,7 @@ public class BoardPane extends HBox
 	private boolean solving = false;
 	private boolean solved = false;
 
-	private List<TileCoordinate> solvingAnimationsQueue = new LinkedList<>();
+	private final List<TileCoordinate> solvingAnimationsQueue = new LinkedList<>();
 
 
 	// INIT
@@ -46,27 +46,27 @@ public class BoardPane extends HBox
 		vBox.setAlignment(Pos.CENTER);
 		getChildren().setAll(vBox);
 
-		this.gridLayout = new GridPane();
-		this.gridLayout.setHgap(-2);
-		this.gridLayout.setVgap(-2);
-		vBox.getChildren().addAll(this.gridLayout);
+		gridLayout = new GridPane();
+		gridLayout.setHgap(-2);
+		gridLayout.setVgap(-2);
+		vBox.getChildren().addAll(gridLayout);
 	}
 
 	private void displayBoard()
 	{
-		this.gridLayout.getChildren().clear();
-		this.tilePanes = new BoardTilePane[this.board.getHeight()][this.board.getWidth()];
+		gridLayout.getChildren().clear();
+		tilePanes = new BoardTilePane[board.getHeight()][board.getWidth()];
 
-		for(int y = 0; y < this.board.getHeight(); y++)
-			for(int x = 0; x < this.board.getWidth(); x++)
+		for(int y = 0; y < board.getHeight(); y++)
+			for(int x = 0; x < board.getWidth(); x++)
 			{
 				BoardTilePane boardTilePane = new BoardTilePane(this, x, y);
 
-				this.tilePanes[y][x] = boardTilePane;
-				this.gridLayout.add(boardTilePane, x, y);
+				tilePanes[y][x] = boardTilePane;
+				gridLayout.add(boardTilePane, x, y);
 			}
 
-		setTileSize(this.boardWidth, this.boardHeight);
+		setTileSize(boardWidth, boardHeight);
 	}
 
 
@@ -76,7 +76,7 @@ public class BoardPane extends HBox
 		this.board = board;
 		displayBoard();
 
-		this.solved = false;
+		solved = false;
 	}
 
 	public void setTileSize(double boardWidth, double boardHeight)
@@ -87,58 +87,58 @@ public class BoardPane extends HBox
 		setPrefWidth(boardWidth);
 		setPrefHeight(boardHeight);
 
-		if(this.board == null)
+		if(board == null)
 			return;
 
-		double widthPerTile = boardWidth/this.board.getWidth();
-		double heightPerTile = boardHeight/this.board.getHeight();
+		double widthPerTile = boardWidth/board.getWidth();
+		double heightPerTile = boardHeight/board.getHeight();
 
 		double size = Math.min(widthPerTile, heightPerTile);
 
-		for(int y = 0; y < this.board.getHeight(); y++)
-			for(int x = 0; x < this.board.getWidth(); x++)
-				this.tilePanes[y][x].setSize(size);
+		for(int y = 0; y < board.getHeight(); y++)
+			for(int x = 0; x < board.getWidth(); x++)
+				tilePanes[y][x].setSize(size);
 	}
 
 	public void setTileColor(Color color)
 	{
-		if(this.board == null)
+		if(board == null)
 			return;
 
-		for(int y = 0; y < this.board.getHeight(); y++)
-			for(int x = 0; x < this.board.getWidth(); x++)
-				this.tilePanes[y][x].setColor(color);
+		for(int y = 0; y < board.getHeight(); y++)
+			for(int x = 0; x < board.getWidth(); x++)
+				tilePanes[y][x].setColor(color);
 	}
 
 
 	// GETTERS
 	public Board getBoard()
 	{
-		return this.board;
+		return board;
 	}
 
 	public boolean isSolving()
 	{
-		return this.solving;
+		return solving;
 	}
 
 
 	// UPDATE
 	protected void onTileClick(int x, int y)
 	{
-		if(this.solved)
+		if(solved)
 		{
-			this.mainGUI.displayRandomBoard();
+			mainGUI.displayRandomBoard();
 			return;
 		}
 
-		if(this.solving)
+		if(solving)
 			return;
 
-		this.board.rotateTileAt(x, y);
-		this.tilePanes[y][x].rotate(300);
+		board.rotateTileAt(x, y);
+		tilePanes[y][x].rotate(300);
 
-		if(this.board.isSolved())
+		if(board.isSolved())
 			onSolved();
 	}
 
@@ -146,15 +146,15 @@ public class BoardPane extends HBox
 	// SOLVING
 	public boolean solve()
 	{
-		if(this.board == null)
+		if(board == null)
 			return true;
 
-		if(this.board.isSolved())
+		if(board.isSolved())
 			return true;
 
-		this.solvingAnimationsQueue.clear();
+		solvingAnimationsQueue.clear();
 
-		Board boardCopy = this.board.copy();
+		Board boardCopy = board.copy();
 		BoardSolver boardSolver = new BoardSolver(boardCopy);
 
 		boolean solved = boardSolver.solve();
@@ -162,25 +162,25 @@ public class BoardPane extends HBox
 			return false;
 
 		// this locks the controls
-		this.solving = true;
+		solving = true;
 
-		for(int d = 0; d < this.board.getWidth()+this.board.getHeight()-1; d++)
+		for(int d = 0; d < ((board.getWidth()+board.getHeight())-1); d++)
 		{
-			int direction = d%2 == 0 ? 1 : -1;
-			int start = direction == 1 ? 0 : d;
-			int end = direction == 1 ? d : 0;
+			int direction = ((d%2) == 0) ? 1 : -1;
+			int start = (direction == 1) ? 0 : d;
+			int end = (direction == 1) ? d : 0;
 
-			for(int x = start; direction == 1 ? x <= end : x >= end; x += direction)
+			for(int x = start; (direction == 1) ? (x <= end) : (x >= end); x += direction)
 			{
 				int y = d-x;
 
-				if(x >= this.board.getWidth() || y >= this.board.getHeight())
+				if((x >= board.getWidth()) || (y >= board.getHeight()))
 					continue;
 
-				while(!this.board.getTileAt(x, y).equals(boardCopy.getTileAt(x, y)))
+				while(!board.getTileAt(x, y).equals(boardCopy.getTileAt(x, y)))
 				{
-					this.board.rotateTileAt(x, y);
-					this.solvingAnimationsQueue.add(new TileCoordinate(x, y));
+					board.rotateTileAt(x, y);
+					solvingAnimationsQueue.add(new TileCoordinate(x, y));
 				}
 			}
 		}
@@ -191,29 +191,29 @@ public class BoardPane extends HBox
 
 	private void continueAnimationQueue()
 	{
-		if(this.solvingAnimationsQueue.isEmpty())
+		if(solvingAnimationsQueue.isEmpty())
 		{
-			this.solving = false;
+			solving = false;
 
 			onSolved();
 			return;
 		}
 
 		double combinedDuration = 7000;
-		double tileDuration = combinedDuration/(this.board.getWidth()*this.board.getHeight());
+		double tileDuration = combinedDuration/(board.getWidth()*board.getHeight());
 		long rotationDuration = Math.round(tileDuration/2);
 
-		TileCoordinate tileCoordinate = this.solvingAnimationsQueue.remove(0);
-		BoardTilePane boardTilePane = this.tilePanes[tileCoordinate.y][tileCoordinate.x];
-		boardTilePane.rotate(rotationDuration, (e)->continueAnimationQueue());
+		TileCoordinate tileCoordinate = solvingAnimationsQueue.remove(0);
+		BoardTilePane boardTilePane = tilePanes[tileCoordinate.y][tileCoordinate.x];
+		boardTilePane.rotate(rotationDuration, e->continueAnimationQueue());
 	}
 
 
 	private void onSolved()
 	{
-		this.solved = true;
+		solved = true;
 
-		this.mainGUI.changeToRandomColorCombination();
+		mainGUI.changeToRandomColorCombination();
 	}
 
 }

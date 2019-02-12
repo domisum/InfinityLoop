@@ -14,12 +14,13 @@ public class Tile
 		if(sides.length != 4)
 			throw new IllegalArgumentException("The number of sides has to be 4");
 
-		this.sides = sides;
+		this.sides = sides.clone();
 	}
 
 
 	// OBJECT
-	@Override public String toString()
+	@Override
+	public String toString()
 	{
 		if(getLeft() && getTop() && getRight() && getBottom())
 			return "╋";
@@ -58,62 +59,64 @@ public class Tile
 
 
 		if(getLeft() && !getTop() && !getRight() && !getBottom())
-			return "l";//"╸";
+			return "╸";
 		if(!getLeft() && getTop() && !getRight() && !getBottom())
-			return "t";//"╹";
+			return "╹";
 		if(!getLeft() && !getTop() && getRight() && !getBottom())
-			return "r";//"╺";
+			return "╺";
 		if(!getLeft() && !getTop() && !getRight() && getBottom())
-			return "b";//"╻";
+			return "╻";
 
 		return " ";
 	}
 
-	@Override public boolean equals(Object o)
+	@Override
+	public boolean equals(Object o)
 	{
 		if(this == o)
 			return true;
-		if(o == null || getClass() != o.getClass())
+		if((o == null) || (getClass() != o.getClass()))
 			return false;
 
 		Tile tile = (Tile) o;
 
-		if(!Arrays.equals(this.sides, tile.sides))
+		if(!Arrays.equals(sides, tile.sides))
 			return false;
 
 		return true;
 	}
 
-	@Override public int hashCode()
+	@Override
+	public int hashCode()
 	{
-		return Arrays.hashCode(this.sides);
+		return Arrays.hashCode(sides);
 	}
 
 
 	// GETTERS
 	public boolean getLeft()
 	{
-		return this.sides[0];
+		return sides[0];
 	}
 
 	public boolean getTop()
 	{
-		return this.sides[1];
+		return sides[1];
 	}
 
 	public boolean getRight()
 	{
-		return this.sides[2];
+		return sides[2];
 	}
 
 	public boolean getBottom()
 	{
-		return this.sides[3];
+		return sides[3];
 	}
 
 	public boolean get(Direction direction)
 	{
-		return this.sides[direction.id];
+		return sides[direction.id];
 	}
 
 
@@ -125,7 +128,7 @@ public class Tile
 
 	public Tile getSet(Direction direction, boolean set)
 	{
-		boolean[] sidesCopy = Arrays.copyOf(this.sides, 4);
+		boolean[] sidesCopy = Arrays.copyOf(sides, 4);
 		sidesCopy[direction.id] = set;
 
 		return new Tile(sidesCopy);

@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 import jpp.infinityloop.board.model.Tile;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -54,7 +55,7 @@ public class Images
 			InputStream inputStream = new FileInputStream(path);
 			return new Image(inputStream);
 		}
-		catch(Exception e)
+		catch(FileNotFoundException e)
 		{
 			e.printStackTrace();
 		}
@@ -140,8 +141,8 @@ public class Images
 	public static class ImageAndRotation
 	{
 
-		public final Image image;
-		public final int rotation;
+		private final Image image;
+		private final int rotation;
 
 
 		// INIT
@@ -151,6 +152,17 @@ public class Images
 			this.rotation = rotation;
 		}
 
+
+		// GETTERS
+		public Image getImage()
+		{
+			return image;
+		}
+
+		public int getRotation()
+		{
+			return rotation;
+		}
 	}
 
 }

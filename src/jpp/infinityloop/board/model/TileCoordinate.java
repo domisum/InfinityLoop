@@ -1,5 +1,7 @@
 package jpp.infinityloop.board.model;
 
+import java.util.Objects;
+
 public class TileCoordinate
 {
 
@@ -16,27 +18,26 @@ public class TileCoordinate
 
 
 	// OBJECT
-	@Override public boolean equals(Object o)
+	@Override
+	public boolean equals(Object o)
 	{
 		if(!(o instanceof TileCoordinate))
 			return false;
 
 		TileCoordinate that = (TileCoordinate) o;
 
-		if(this.x != that.x)
+		if(x != that.x)
 			return false;
-		if(this.y != that.y)
+		if(y != that.y)
 			return false;
 
 		return true;
 	}
 
-	@Override public int hashCode()
+	@Override
+	public int hashCode()
 	{
-		int result = this.x;
-		result = 419*result+this.y;
-
-		return result;
+		return Objects.hash(x, y);
 	}
 
 }

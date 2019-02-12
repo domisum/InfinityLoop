@@ -19,7 +19,7 @@ public class MenuIconPane extends StackPane
 	private static final String BUTTON_STYLE_HOVER = "-fx-padding: 0,0,0,0;-fx-background-color: rgba(250, 250, 250, 0.2); -fx-background-radius: 0 0 0 0;";
 
 	// REFERENCES
-	private ImageView iconImageView;
+	private final ImageView iconImageView;
 
 
 	// INIT
@@ -27,17 +27,17 @@ public class MenuIconPane extends StackPane
 	{
 		Image image = Images.getInstance().getIcon(iconName);
 
-		this.iconImageView = new ImageView(image);
-		this.iconImageView.setFitWidth(MenuPane.ICON_SIZE);
-		this.iconImageView.setFitHeight(MenuPane.ICON_SIZE);
+		iconImageView = new ImageView(image);
+		iconImageView.setFitWidth(MenuPane.ICON_SIZE);
+		iconImageView.setFitHeight(MenuPane.ICON_SIZE);
 
 		Button imageButton = new Button();
-		imageButton.setGraphic(this.iconImageView);
+		imageButton.setGraphic(iconImageView);
 		imageButton.setStyle(BUTTON_STYLE_NORMAL);
 		imageButton.setTooltip(new Tooltip(tooltip));
 
-		imageButton.setOnMouseEntered((e)->imageButton.setStyle(BUTTON_STYLE_HOVER));
-		imageButton.setOnMouseExited((e)->imageButton.setStyle(BUTTON_STYLE_NORMAL));
+		imageButton.setOnMouseEntered(e->imageButton.setStyle(BUTTON_STYLE_HOVER));
+		imageButton.setOnMouseExited(e->imageButton.setStyle(BUTTON_STYLE_NORMAL));
 		imageButton.setOnMouseClicked(onClick);
 
 		getChildren().setAll(imageButton);
@@ -46,7 +46,7 @@ public class MenuIconPane extends StackPane
 	// SETTERS
 	public void setImageColor(Color imageColor)
 	{
-		this.iconImageView.setEffect(new ColorChangeEffect(imageColor));
+		iconImageView.setEffect(new ColorChangeEffect(imageColor));
 	}
 
 }
