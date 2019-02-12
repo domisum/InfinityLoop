@@ -1,4 +1,4 @@
-package jpp.infinityloop.board;
+package jpp.infinityloop.board.model;
 
 import java.util.Arrays;
 

@@ -1,5 +1,10 @@
 package jpp.infinityloop.board;
 
+import jpp.infinityloop.board.model.Board;
+import jpp.infinityloop.board.model.Direction;
+import jpp.infinityloop.board.model.Tile;
+import jpp.infinityloop.board.model.TileCoordinate;
+
 public class BoardSolver
 {
 

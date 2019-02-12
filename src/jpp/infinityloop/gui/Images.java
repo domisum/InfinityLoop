@@ -1,7 +1,7 @@
 package jpp.infinityloop.gui;
 
 import javafx.scene.image.Image;
-import jpp.infinityloop.board.Tile;
+import jpp.infinityloop.board.model.Tile;
 
 import java.io.FileInputStream;
 import java.io.InputStream;

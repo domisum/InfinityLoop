@@ -7,7 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-import jpp.infinityloop.board.Tile;
+import jpp.infinityloop.board.model.Tile;
 import jpp.infinityloop.gui.Images;
 import jpp.infinityloop.gui.color.ColorChangeEffect;
 

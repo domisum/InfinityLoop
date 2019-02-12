@@ -1,4 +1,4 @@
-package jpp.infinityloop.board;
+package jpp.infinityloop.board.model;
 
 import jpp.infinityloop.helper.Validate;
 
@@ -11,7 +11,7 @@ public class Board
 	private static final Tile EMPTY_TILE = new Tile(false, false, false, false);
 
 	// DATA
-	private Tile[][] tiles;
+	private final Tile[][] tiles;
 
 
 	// INIT
@@ -35,7 +35,8 @@ public class Board
 
 
 	// OBJECT
-	@Override public String toString()
+	@Override
+	public String toString()
 	{
 		String string = "";
 
@@ -55,17 +56,17 @@ public class Board
 	// GETTERS
 	public int getWidth()
 	{
-		return this.tiles[0].length;
+		return tiles[0].length;
 	}
 
 	public int getHeight()
 	{
-		return this.tiles.length;
+		return tiles.length;
 	}
 
 	public Tile getTileAt(int x, int y)
 	{
-		return this.tiles[y][x];
+		return tiles[y][x];
 	}
 
 
@@ -73,7 +74,7 @@ public class Board
 	public void rotateTileAt(int x, int y)
 	{
 		Tile rotatedTile = getTileAt(x, y).getRotated();
-		this.tiles[y][x] = rotatedTile;
+		tiles[y][x] = rotatedTile;
 	}
 
 	public void shuffle()

@@ -5,9 +5,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import jpp.infinityloop.board.Board;
+import jpp.infinityloop.board.model.Board;
 import jpp.infinityloop.board.BoardSolver;
-import jpp.infinityloop.board.TileCoordinate;
+import jpp.infinityloop.board.model.TileCoordinate;
 import jpp.infinityloop.gui.MainGUI;
 
 import java.util.LinkedList;

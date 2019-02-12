@@ -11,7 +11,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
 import javafx.stage.Stage;
-import jpp.infinityloop.board.Board;
+import jpp.infinityloop.board.model.Board;
 import jpp.infinityloop.board.BoardGenerator;
 import jpp.infinityloop.gui.color.Colors;
 import jpp.infinityloop.gui.color.Colors.ColorCombination;
