@@ -3,8 +3,6 @@ package jpp.infinityloop.gui;
 import javafx.scene.image.Image;
 import jpp.infinityloop.board.model.Tile;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,8 +11,8 @@ public class Images
 {
 
 	// CONSTANTS
-	private static final String TILES_PATH = "res/img/tiles/";
-	private static final String ICONS_PATH = "res/img/icons/";
+	private static final String TILES_PATH = "/img/tiles/";
+	private static final String ICONS_PATH = "/img/icons/";
 
 	// REFERENCES
 	private static final Images instance = new Images();
@@ -50,17 +48,8 @@ public class Images
 
 	private Image loadImage(String path)
 	{
-		try
-		{
-			InputStream inputStream = new FileInputStream(path);
-			return new Image(inputStream);
-		}
-		catch(FileNotFoundException e)
-		{
-			e.printStackTrace();
-		}
-
-		return null;
+		InputStream inputStream = ClassLoader.class.getResourceAsStream(path);
+		return new Image(inputStream);
 	}
 
 
