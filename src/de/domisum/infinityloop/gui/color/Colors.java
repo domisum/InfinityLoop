@@ -1,4 +1,4 @@
-package jpp.infinityloop.gui.color;
+package de.domisum.infinityloop.gui.color;
 
 import javafx.scene.paint.Color;
 

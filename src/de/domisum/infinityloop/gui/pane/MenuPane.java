@@ -1,14 +1,14 @@
-package jpp.infinityloop.gui.pane;
+package de.domisum.infinityloop.gui.pane;
 
+import de.domisum.infinityloop.board.file.BoardLoader;
+import de.domisum.infinityloop.board.file.BoardWriter;
+import de.domisum.infinityloop.board.model.Board;
 import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
-import jpp.infinityloop.board.file.BoardLoader;
-import jpp.infinityloop.board.file.BoardWriter;
-import jpp.infinityloop.board.model.Board;
-import jpp.infinityloop.gui.MainGUI;
+import de.domisum.infinityloop.gui.MainGUI;
 
 import java.io.File;
 import java.util.HashSet;

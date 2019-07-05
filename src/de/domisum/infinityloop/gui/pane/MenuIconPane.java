@@ -1,5 +1,6 @@
-package jpp.infinityloop.gui.pane;
+package de.domisum.infinityloop.gui.pane;
 
+import de.domisum.infinityloop.gui.color.ColorChangeEffect;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
@@ -8,8 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import jpp.infinityloop.gui.Images;
-import jpp.infinityloop.gui.color.ColorChangeEffect;
+import de.domisum.infinityloop.gui.Images;
 
 public class MenuIconPane extends StackPane
 {

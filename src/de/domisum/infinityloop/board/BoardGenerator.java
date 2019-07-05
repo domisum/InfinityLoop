@@ -1,8 +1,8 @@
-package jpp.infinityloop.board;
+package de.domisum.infinityloop.board;
 
-import jpp.infinityloop.board.model.Board;
-import jpp.infinityloop.board.model.Direction;
-import jpp.infinityloop.board.model.Tile;
+import de.domisum.infinityloop.board.model.Board;
+import de.domisum.infinityloop.board.model.Direction;
+import de.domisum.infinityloop.board.model.Tile;
 
 import java.util.Random;
 

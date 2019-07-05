@@ -1,14 +1,14 @@
-package jpp.infinityloop.gui.pane;
+package de.domisum.infinityloop.gui.pane;
 
+import de.domisum.infinityloop.board.BoardSolver;
+import de.domisum.infinityloop.board.model.Board;
+import de.domisum.infinityloop.board.model.TileCoordinate;
 import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import jpp.infinityloop.board.BoardSolver;
-import jpp.infinityloop.board.model.Board;
-import jpp.infinityloop.board.model.TileCoordinate;
-import jpp.infinityloop.gui.MainGUI;
+import de.domisum.infinityloop.gui.MainGUI;
 
 import java.util.LinkedList;
 import java.util.List;

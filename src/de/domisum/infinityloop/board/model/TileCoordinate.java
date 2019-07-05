@@ -1,4 +1,4 @@
-package jpp.infinityloop.board.model;
+package de.domisum.infinityloop.board.model;
 
 import java.util.Objects;
 

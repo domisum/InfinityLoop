@@ -1,5 +1,7 @@
-package jpp.infinityloop.gui.pane;
+package de.domisum.infinityloop.gui.pane;
 
+import de.domisum.infinityloop.board.model.Tile;
+import de.domisum.infinityloop.gui.color.ColorChangeEffect;
 import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -7,10 +9,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-import jpp.infinityloop.board.model.Tile;
-import jpp.infinityloop.gui.Images;
-import jpp.infinityloop.gui.Images.ImageAndRotation;
-import jpp.infinityloop.gui.color.ColorChangeEffect;
+import de.domisum.infinityloop.gui.Images;
+import de.domisum.infinityloop.gui.Images.ImageAndRotation;
 
 public class BoardTilePane extends StackPane
 {

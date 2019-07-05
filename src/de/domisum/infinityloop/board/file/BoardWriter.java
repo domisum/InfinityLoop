@@ -1,7 +1,7 @@
-package jpp.infinityloop.board.file;
+package de.domisum.infinityloop.board.file;
 
-import jpp.infinityloop.board.model.Board;
-import jpp.infinityloop.board.transcoding.BoardEncoder;
+import de.domisum.infinityloop.board.transcoding.BoardEncoder;
+import de.domisum.infinityloop.board.model.Board;
 
 import java.io.File;
 import java.io.IOException;

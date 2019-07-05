@@ -1,5 +1,11 @@
-package jpp.infinityloop.gui;
+package de.domisum.infinityloop.gui;
 
+import de.domisum.infinityloop.board.BoardGenerator;
+import de.domisum.infinityloop.board.model.Board;
+import de.domisum.infinityloop.gui.color.Colors;
+import de.domisum.infinityloop.gui.color.Colors.ColorCombination;
+import de.domisum.infinityloop.gui.pane.BoardPane;
+import de.domisum.infinityloop.gui.pane.MenuPane;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
@@ -11,12 +17,6 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
 import javafx.stage.Stage;
-import jpp.infinityloop.board.BoardGenerator;
-import jpp.infinityloop.board.model.Board;
-import jpp.infinityloop.gui.color.Colors;
-import jpp.infinityloop.gui.color.Colors.ColorCombination;
-import jpp.infinityloop.gui.pane.BoardPane;
-import jpp.infinityloop.gui.pane.MenuPane;
 
 import java.util.Random;
 

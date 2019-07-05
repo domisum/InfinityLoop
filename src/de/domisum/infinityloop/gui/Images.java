@@ -1,7 +1,7 @@
-package jpp.infinityloop.gui;
+package de.domisum.infinityloop.gui;
 
+import de.domisum.infinityloop.board.model.Tile;
 import javafx.scene.image.Image;
-import jpp.infinityloop.board.model.Tile;
 
 import java.io.InputStream;
 import java.util.HashMap;

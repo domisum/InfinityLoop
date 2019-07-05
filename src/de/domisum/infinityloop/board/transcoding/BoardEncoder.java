@@ -1,7 +1,7 @@
-package jpp.infinityloop.board.transcoding;
+package de.domisum.infinityloop.board.transcoding;
 
-import jpp.infinityloop.board.model.Board;
-import jpp.infinityloop.board.model.Tile;
+import de.domisum.infinityloop.board.model.Board;
+import de.domisum.infinityloop.board.model.Tile;
 
 public class BoardEncoder
 {

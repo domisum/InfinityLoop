@@ -1,4 +1,4 @@
-package jpp.infinityloop.helper;
+package de.domisum.infinityloop.helper;
 
 public final class Validate
 {

@@ -1,6 +1,6 @@
-package jpp.infinityloop.board.model;
+package de.domisum.infinityloop.board.model;
 
-import jpp.infinityloop.helper.Validate;
+import de.domisum.infinityloop.helper.Validate;
 
 import java.util.Random;
 
